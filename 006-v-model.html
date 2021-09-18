@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-Once</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p :style="{fontSize: tamanho + 'px' }">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis possimus
+            fugiat nulla similique sint nihil hic,
+            laboriosam ipsum facilis neque porro, modi magni ducimus dolores! Dolores omnis quisquam ex aperiam.
+        </p>
+        <div><input type="number" v-model="tamanho"></div>
+        <div id="Paleta" :style="{backgroundColor: backColor}">
+            <h3>Try Color!</h3>
+            <div>
+
+                <input type="text" v-model="backColor">
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    tamanho: 10,
+                    backColor: 'write'
+                }
+            },
+        })
+    </script>
+
+</body>
+<style>
+    #Paleta {
+        height: 100px;
+        width: 250px;
+
+        color: #93bd15;
+        border-radius: 5px;
+        padding: 20px;
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+</style>
+
+
+</html>
+<!-- -->

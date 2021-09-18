@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-FOR</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>V-FOR</h1>
+        <ol>
+            <li v-for="cidade in cidades">{{cidade}}</li>
+        </ol>
+        <ul>
+            <li v-for="cidade in objCidade">Cidade: {{cidade.cidade}} - Estado: {{cidade.estado}}</li>
+        </ul>
+        <ul>
+            <li v-for="(filme,index) in filmes">{{index}} - {{filme}}</li>
+        </ul>
+
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data() {
+                return {
+
+                    cidades: ['São Paulo', 'Belo Horizonte', 'Rio de Janeiro', 'Vitória'],
+                    objCidade: [
+                        {
+                            cidade: "Belo Horizonte",
+                            estado: "Minas Gerais"
+                        },
+                        {
+                            cidade: "Vitória",
+                            estado: "Espirito Santo"
+                        },
+                        {
+                            cidade: "Porto Alegre",
+                            estado: "Rio Grande Do Sul"
+                        },
+                        {
+                            cidade: "Recife",
+                            estado: "Pernambuco"
+                        }
+                    ],
+                    filmes: ["De volta para o Futuro", "Senhor do Anéis", "Alice no País das Maravilhas"]
+                }
+            },
+        })
+    </script>
+
+</body>
+
+
+</html>
+<!-- V-Once so executa uma unica vez. Se mudarmos o valor da 
+variável ela não será atualizada na página -->

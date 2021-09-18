@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-On</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Que tal brincar com os eventos utilizando o V-on</h1>
+        <h1 @click="inverter">{{mensagem}}</h1>
+        <div>
+            <h4>Usuários Cadastrados</h4>
+            <div>
+                <label for="filtro">Filtrar</label>
+                <input type="text" name="filtro" placeholder="Procure por usários" @keyup="filtrarUsuario">
+            </div>
+            <ol>
+                <li v-for="usuario in usuariosFiltrados">{{usuario}}</li>
+            </ol>
+        </div>
+
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    mensagem: "Eventos utilizando o V-ON",
+                    usuarios: [
+                        'Karoline de Andrada Gutierrez',
+                        'Pedro Rollin Silva',
+                        'Mario Jesus',
+                        'Felipe Algusto Santos',
+                        'Melina Silva',
+                        'Caique Santos de Bruno',
+                        'Maiara de azevedo',
+                        'Kelly torato',
+                        'Alessandra Franja',
+                        'Pierre Cardan',
+                        'Bruno Maria de Vitoria',
+                        'João Rangel'
+
+                    ],
+                    usuariosFiltrados: []
+                }
+            },
+            methods: {
+                inverter() {
+                    this.mensagem = this.mensagem.split(' ').reverse().join(' ');
+                },
+                filtrarUsuario(event) {
+                    this.usuariosFiltrados = this.usuarios.filter(name => {
+                        return name.toUpperCase().includes(event.target.value.toUpperCase());
+                    })
+                }
+            },
+            created() {
+                this.usuariosFiltrados = this.usuarios
+            },
+        })
+    </script>
+
+</body>
+<style>
+
+</style>
+
+
+</html>
+<!-- -->

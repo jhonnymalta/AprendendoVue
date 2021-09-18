@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-Show</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1 v-show="logado">Como usar componentes</h1>
+        <componetONE></componetONE>
+    </div>
+
+    <script>
+        Vue.component('componentONE', {
+            template: `
+            <div>
+                <p>Meu Primeiro Component</p>
+                </div>
+            `
+        });
+        let app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    logado: true
+                }
+            },
+        })
+    </script>
+
+</body>
+
+
+</html>
+<!-- Estudo sobre V-slot ainda em andamento -->
