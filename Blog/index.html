@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-Once</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div id="app">
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand">BlogVue</a>
+                <div class="px-5">
+                    <div v-if="isLoged">
+                        <button class="btn btn-outline-success px-5" type="submit" key="logado"
+                            @click.prevent="toggleLogin">Logar</button>
+                    </div>
+                    <div v-else>
+                        Usuário: <u>"Jota Landes" </u>
+                        <button class="btn btn-outline-danger px-5 " type="submit" key="naologado"
+                            @click.prevent="toggleLogin">Sair</button>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+        <div class="container wrap">
+            <div class="d-flex flex-wrap">
+                <div v-for="post in posts" :key="post.id">
+                    <div class="card mx-3" style="width: 18rem;">
+                        <img :src="post.img" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{post.title}}</h5>
+                            <p class="card-text">{{post.post | truncate(100)}}</p>
+                            <a href="#" class="btn btn-primary">Continuar Lendo</a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    isLoged: false,
+
+                    posts: [
+                        {
+                            img: './img/vue1.png',
+                            title: 'Tudo sobre Vue',
+                            post: `
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nulla mauris turpis, 
+                            ullamcorper vitae mauris sit amet, varius auctor justo.Pellentesque at urna 
+                            efficitur, congue nisi sit amet, aliquet erat.Vestibulum risus lectus,
+                             rutrum gravida nisl nec, vestibulum sagittis diam.Suspendisse mattis rutrum lectus vel
+                              ornare.In hac habitasse platea dictumst.In cursus maximus nisi nec aliquam.In orci metus,
+                               laoreet vel fermentum at, venenatis vel purus.Ut elementum viverra lorem non lacinia.Sed 
+                               auctor magna eu risus cursus, quis vestibulum justo feugiat.Etiam pretium lacus nibh, 
+                               a ullamcorper libero vulputate quis.Aenean ultricies nulla quis turpis condimentum
+                                sollicitudin.Morbi eleifend nibh ultricies ultricies finibus.Integer sapien dolor,
+                                 blandit vel semper eget, tincidunt non mauris.Vivamus sit amet metus quis diam facilisis 
+                                 facilisis a non leo.Nam ullamcorper posuere libero, et bibendum tellus consequat eget.
+                                 Curabitur maximus turpis vel nisl vulputate ultrices.                             
+                            
+                            `
+                        },
+                        {
+                            img: './img/vue2.png',
+                            title: 'Node and Vue',
+                            post: `
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nulla mauris turpis, 
+                            ullamcorper vitae mauris sit amet, varius auctor justo.Pellentesque at urna 
+                            efficitur, congue nisi sit amet, aliquet erat.Vestibulum risus lectus,
+                             rutrum gravida nisl nec, vestibulum sagittis diam.Suspendisse mattis rutrum lectus vel
+                              ornare.In hac habitasse platea dictumst.In cursus maximus nisi nec aliquam.In orci metus,
+                               laoreet vel fermentum at, venenatis vel purus.Ut elementum viverra lorem non lacinia.Sed 
+                               auctor magna eu risus cursus, quis vestibulum justo feugiat.Etiam pretium lacus nibh, 
+                               a ullamcorper libero vulputate quis.Aenean ultricies nulla quis turpis condimentum
+                                sollicitudin.Morbi eleifend nibh ultricies ultricies finibus.Integer sapien dolor,
+                                 blandit vel semper eget, tincidunt non mauris.Vivamus sit amet metus quis diam facilisis 
+                                 facilisis a non leo.Nam ullamcorper posuere libero, et bibendum tellus consequat eget.
+                                 Curabitur maximus turpis vel nisl vulputate ultrices.                             
+                            
+                            `
+                        },
+                        {
+                            img: './img/vue3.jpg',
+                            title: 'Mercado Vue',
+                            post: `
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nulla mauris turpis, 
+                            ullamcorper vitae mauris sit amet, varius auctor justo.Pellentesque at urna 
+                            efficitur, congue nisi sit amet, aliquet erat.Vestibulum risus lectus,
+                             rutrum gravida nisl nec, vestibulum sagittis diam.Suspendisse mattis rutrum lectus vel
+                              ornare.In hac habitasse platea dictumst.In cursus maximus nisi nec aliquam.In orci metus,
+                               laoreet vel fermentum at, venenatis vel purus.Ut elementum viverra lorem non lacinia.Sed 
+                               auctor magna eu risus cursus, quis vestibulum justo feugiat.Etiam pretium lacus nibh, 
+                               a ullamcorper libero vulputate quis.Aenean ultricies nulla quis turpis condimentum
+                                sollicitudin.Morbi eleifend nibh ultricies ultricies finibus.Integer sapien dolor,
+                                 blandit vel semper eget, tincidunt non mauris.Vivamus sit amet metus quis diam facilisis 
+                                 facilisis a non leo.Nam ullamcorper posuere libero, et bibendum tellus consequat eget.
+                                 Curabitur maximus turpis vel nisl vulputate ultrices.                             
+                            
+                            `
+                        },
+                        {
+                            img: './img/vue4.png',
+                            title: 'Futuro do Vue',
+                            post: `
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nulla mauris turpis, 
+                            ullamcorper vitae mauris sit amet, varius auctor justo.Pellentesque at urna 
+                            efficitur, congue nisi sit amet, aliquet erat.Vestibulum risus lectus,
+                             rutrum gravida nisl nec, vestibulum sagittis diam.Suspendisse mattis rutrum lectus vel
+                              ornare.In hac habitasse platea dictumst.In cursus maximus nisi nec aliquam.In orci metus,
+                               laoreet vel fermentum at, venenatis vel purus.Ut elementum viverra lorem non lacinia.Sed 
+                               auctor magna eu risus cursus, quis vestibulum justo feugiat.Etiam pretium lacus nibh, 
+                               a ullamcorper libero vulputate quis.Aenean ultricies nulla quis turpis condimentum
+                                sollicitudin.Morbi eleifend nibh ultricies ultricies finibus.Integer sapien dolor,
+                                 blandit vel semper eget, tincidunt non mauris.Vivamus sit amet metus quis diam facilisis 
+                                 facilisis a non leo.Nam ullamcorper posuere libero, et bibendum tellus consequat eget.
+                                 Curabitur maximus turpis vel nisl vulputate ultrices.                             
+                            
+                            `
+                        },
+                        {
+                            img: './img/vue3.jpg',
+                            title: 'Vue',
+                            post: `
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nulla mauris turpis, 
+                            ullamcorper vitae mauris sit amet, varius auctor justo.Pellentesque at urna 
+                            efficitur, congue nisi sit amet, aliquet erat.Vestibulum risus lectus,
+                             rutrum gravida nisl nec, vestibulum sagittis diam.Suspendisse mattis rutrum lectus vel
+                              ornare.In hac habitasse platea dictumst.In cursus maximus nisi nec aliquam.In orci metus,
+                               laoreet vel fermentum at, venenatis vel purus.Ut elementum viverra lorem non lacinia.Sed 
+                               auctor magna eu risus cursus, quis vestibulum justo feugiat.Etiam pretium lacus nibh, 
+                               a ullamcorper libero vulputate quis.Aenean ultricies nulla quis turpis condimentum
+                                sollicitudin.Morbi eleifend nibh ultricies ultricies finibus.Integer sapien dolor,
+                                 blandit vel semper eget, tincidunt non mauris.Vivamus sit amet metus quis diam facilisis 
+                                 facilisis a non leo.Nam ullamcorper posuere libero, et bibendum tellus consequat eget.
+                                 Curabitur maximus turpis vel nisl vulputate ultrices.                             
+                            
+                            `
+                        },
+                        {
+                            img: './img/vue4.png',
+                            title: 'Vamos aprender vue?',
+                            post: `
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nulla mauris turpis, 
+                            ullamcorper vitae mauris sit amet, varius auctor justo.Pellentesque at urna 
+                            efficitur, congue nisi sit amet, aliquet erat.Vestibulum risus lectus,
+                             rutrum gravida nisl nec, vestibulum sagittis diam.Suspendisse mattis rutrum lectus vel
+                              ornare.In hac habitasse platea dictumst.In cursus maximus nisi nec aliquam.In orci metus,
+                               laoreet vel fermentum at, venenatis vel purus.Ut elementum viverra lorem non lacinia.Sed 
+                               auctor magna eu risus cursus, quis vestibulum justo feugiat.Etiam pretium lacus nibh, 
+                               a ullamcorper libero vulputate quis.Aenean ultricies nulla quis turpis condimentum
+                                sollicitudin.Morbi eleifend nibh ultricies ultricies finibus.Integer sapien dolor,
+                                 blandit vel semper eget, tincidunt non mauris.Vivamus sit amet metus quis diam facilisis 
+                                 facilisis a non leo.Nam ullamcorper posuere libero, et bibendum tellus consequat eget.
+                                 Curabitur maximus turpis vel nisl vulputate ultrices.                             
+                            
+                            `
+                        },
+                    ]
+                }
+            },
+            methods: {
+                toggleLogin() {
+                    this.isLoged = !this.isLoged
+                }
+            },
+        })
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+
+</body>
+
+
+</html>
+<!-- -->
